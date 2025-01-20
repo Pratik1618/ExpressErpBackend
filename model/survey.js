@@ -25,10 +25,10 @@ const surveyDataSchema = new mongoose.Schema({
     servicesRequired: [Schema.Types.Mixed], // Assuming this is an object
     additionalServices: [Schema.Types.Mixed], // Assuming this is an object
     premisesType: String,
-    premises: { type: Number, required: true }
+    premises: { type: Number, required: true },
+    isDeleted: { type: Number, default: 0 },
 
-
-}, { timestamps: true })
+}, { timestamps: true  })
 
 const SurveyData = mongoose.model('SurveyData', surveyDataSchema);
 

@@ -5,12 +5,15 @@ const connectDB = require('./model/db');
 const SurveyData = require('./model/survey');
 const elevatorRoutes = require('./routes/elevatorRoutes')
 const app = express();
-
-
+const deleteSurveyById = require('./deletecall/surveyDelete')
+const getSurvey = require('./getcall/surveyGet')
 
 app.use(cors());
 app.use(bodyParser.json());
 connectDB();
+
+app.use(getSurvey)
+app.use(deleteSurveyById)
 
 // POST route to create survey data
 app.post('/survey/create', async (req, res) => {
@@ -49,8 +52,8 @@ app.post('/survey/create', async (req, res) => {
     await elevatorRoutes.processElevatorData(incomingData)
     // If there is escalator data, print the capacity for each entry
     if (incomingData.allEscalatorData && incomingData.allEscalatorData.length > 0) {
-        incomingData.allEscalatorData.forEach(survey => {
-            console.log('Escalator capacity:', survey.capacity);
+        incomingData.allEscalatorData.forEach(elevator => {
+            console.log('Escalator capacity:', elevator.capacity);
         });
     }
 

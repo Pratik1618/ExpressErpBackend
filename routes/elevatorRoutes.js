@@ -13,14 +13,14 @@ async function processElevatorData(incomingData) {
             for (let elevator of incomingData.allElevatorData) {
                 try {
                     // Create a new instance of the SurveyData model
-                    const newELevatorData = new ElevatorData(survey);
+                    const newELevatorData = new ElevatorData(elevator);
                     console.log("Creating new SurveyData:", newELevatorData);
 
                     // Save the data to MongoDB
                     await newELevatorData.save();
-                    console.log('Survey data saved successfully for client:', survey.clientName);
+                    console.log('Survey data saved successfully for client:', elevator.capacity);
                 } catch (error) {
-                    console.error('Error saving survey data for client:', survey.clientName, error);
+                    console.error('Error saving survey data for client:',  error);
                 }
             }
         } catch (error) {
