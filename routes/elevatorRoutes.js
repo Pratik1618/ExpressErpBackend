@@ -3,10 +3,9 @@ const express = require('express');
 const ElevatorData = require('../model/elevatorData');
 const router = express.Router();
 
+router.post('/survey/create', async (req, res) => {
 
-// Function to handle survey data processing
-async function processElevatorData(incomingData) {
-    // Check if surveyData is present and has content
+    const incomingData = req.body;
     if (incomingData.allElevatorData && incomingData.allElevatorData.length > 0) {
         try {
             // Using async/await with a for loop to handle async correctly
@@ -30,6 +29,8 @@ async function processElevatorData(incomingData) {
     } else {
         throw new Error('No survey data found');
     }
-}
+});
+// Function to handle survey data processing
 
-module.exports = {processElevatorData};
+
+module.exports = router;

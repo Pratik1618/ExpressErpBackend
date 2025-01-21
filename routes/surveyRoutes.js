@@ -4,7 +4,7 @@ const SurveyData = require('../model/survey');
 const router = express.Router();
 
 
-router.post('/create', async (req, res) => {
+router.post('/survey/create', async (req, res) => {
   const incomingData = req.body;
   console.log('Received data:', incomingData);
 
