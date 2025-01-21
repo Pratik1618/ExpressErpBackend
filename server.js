@@ -21,9 +21,10 @@ app.use(getSurvey)
 app.use(deleteSurveyById)
 app.use(elevatorRoutes)
 app.use(getCities)
-app.use(getBusinessCategory)
+
 // POST route to create survey data
 app.use(cities);
+app.use(getBusinessCategory)
 app.use(business);
 app.use(sumationData);
 app.use(surveyRoutes);
