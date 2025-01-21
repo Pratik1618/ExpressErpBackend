@@ -11,6 +11,8 @@ const surveyRoutes = require('./routes/surveyRoutes');
 const sumationData = require('./routes/SumationRoutes');
 const cities = require('./masters/cityMaster')
 const getCities = require('./getcall/cityGetMaster')
+const business = require('./masters/businessCategorieMaster')
+const getBusinessCategory = require('./getcall/getBusinessCategoryMaster')
 app.use(cors());
 app.use(bodyParser.json());
 connectDB();
@@ -19,8 +21,10 @@ app.use(getSurvey)
 app.use(deleteSurveyById)
 app.use(elevatorRoutes)
 app.use(getCities)
+app.use(getBusinessCategory)
 // POST route to create survey data
 app.use(cities);
+app.use(business);
 app.use(sumationData);
 app.use(surveyRoutes);
 app.get('/', (req, res) => {
