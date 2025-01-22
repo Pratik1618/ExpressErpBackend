@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const connectDB = require('./model/db');
+
 const SurveyData = require('./model/survey');
 const elevatorRoutes = require('./routes/elevatorRoutes')
 const app = express();
@@ -12,7 +13,10 @@ const sumationData = require('./routes/SumationRoutes');
 const cities = require('./masters/cityMaster')
 const getCities = require('./getcall/cityGetMaster')
 const business = require('./masters/businessCategorieMaster')
+const StoreData = require('./routes/storeRoomRoute')
 const getBusinessCategory = require('./getcall/getBusinessCategoryMaster')
+const addphoto = require('./routes/addphotoRoute')
+const deleteBusinessCategory = require('./deletecall/businessCategoryDelete')
 app.use(cors());
 app.use(bodyParser.json());
 connectDB();
@@ -28,6 +32,10 @@ app.use(getBusinessCategory)
 app.use(business);
 app.use(sumationData);
 app.use(surveyRoutes);
+app.use(addphoto)
+app.use(StoreData),
+app.use(deleteBusinessCategory)
+
 app.get('/', (req, res) => {
     res.send('Hello, World! This is the root URL.');
 });

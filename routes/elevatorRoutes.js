@@ -6,30 +6,32 @@ const router = express.Router();
 router.post('/survey/create', async (req, res) => {
 
     const incomingData = req.body;
-    if (incomingData.allElevatorData && incomingData.allElevatorData.length > 0) {
+    if (incomingData.allElevatorData && incomingData.allElevatorData
+        .length > 0) {
         try {
-            // Using async/await with a for loop to handle async correctly
-            for (let elevator of incomingData.allElevatorData) {
-                try {
-                    // Create a new instance of the SurveyData model
-                    const newELevatorData = new ElevatorData(elevator);
-                    console.log("Creating new SurveyData:", newELevatorData);
-
-                    // Save the data to MongoDB
-                    await newELevatorData.save();
-                    console.log('Survey data saved successfully for client:', elevator.capacity);
-                } catch (error) {
-                    console.error('Error saving survey data for client:',  error);
-                }
+          for (let elevator of incomingData.allElevatorData
+          ) {
+            try {
+              const newElevatorData = new ElevatorData(elevator);
+              await newElevatorData.save();
+              console.log('Survey data saved successfully for client:', elevator.capacity);
+            } catch (error) {
+              console.error('Error saving survey data:', error);
             }
+          }
+          res.json({
+            status: 'success',
+            message: 'newElevatorData data received and saved successfully',
+            receivedData: incomingData
+          });
         } catch (error) {
-            console.error('Error processing survey data:', error);
-            throw new Error('Failed to process survey data');
+          console.error('Error processing survey data:', error);
+          return res.status(500).json({ message: 'Failed to process survey data' });
         }
-    } else {
-        throw new Error('No survey data found');
-    }
-});
+      } else {
+        return res.status(400).json({ message: 'No survey data provided' });
+      }
+    });
 // Function to handle survey data processing
 
 
