@@ -11,7 +11,7 @@ router.put('/city/delete/:id', async (req, res) => {
        
         const deletedCity = await City.findByIdAndUpdate(
             cityId, 
-            { isDeleted: 1 },  // Set the flag to 1 (hidden)
+            { isDeleted: true },  // Set the flag to 1 (hidden)
             { new: true }  // Return the updated document
         );
      
