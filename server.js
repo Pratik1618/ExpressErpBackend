@@ -26,6 +26,7 @@ app.use(deleteSurveyById)
 app.use(elevatorRoutes)
 app.use(getCities)
 
+// express app backend deployed on render successfully : https://expresserpbackend.onrender.com/
 // POST route to create survey data
 app.use(cities);
 app.use(getBusinessCategory)
