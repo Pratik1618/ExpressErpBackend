@@ -19,6 +19,7 @@ const addphoto = require('./routes/addphotoRoute')
 const deleteBusinessCategory = require('./deletecall/businessCategoryDelete')
 const facade = require('./masters/facadeMaster')
 const getFacades = require('./getcall/getFacadeMaster')
+const deleteCity = require('./deletecall/deleteCity')
 app.use(cors());
 app.use(bodyParser.json());
 connectDB();
@@ -27,6 +28,7 @@ app.use(getSurvey)
 app.use(deleteSurveyById)
 app.use(elevatorRoutes)
 app.use(getCities)
+app.use(deleteCity)
 
 // express app backend deployed on render successfully : https://expresserpbackend.onrender.com/
 // POST route to create survey data
