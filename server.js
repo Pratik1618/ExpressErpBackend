@@ -17,6 +17,8 @@ const StoreData = require('./routes/storeRoomRoute')
 const getBusinessCategory = require('./getcall/getBusinessCategoryMaster')
 const addphoto = require('./routes/addphotoRoute')
 const deleteBusinessCategory = require('./deletecall/businessCategoryDelete')
+const facade = require('./masters/facadeMaster')
+const getFacades = require('./getcall/getFacadeMaster')
 app.use(cors());
 app.use(bodyParser.json());
 connectDB();
@@ -36,7 +38,8 @@ app.use(surveyRoutes);
 app.use(addphoto)
 app.use(StoreData),
 app.use(deleteBusinessCategory)
-
+app.use(facade)
+app.use(getFacades)
 app.get('/', (req, res) => {
     res.send('Hello, World! This is the root URL.');
 });
