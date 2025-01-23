@@ -3,12 +3,12 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const connectDB = require('./model/db');
 
-const SurveyData = require('./model/survey');
+
 const elevatorRoutes = require('./routes/elevatorRoutes')
 const app = express();
 const deleteSurveyById = require('./deletecall/surveyDelete')
 const getSurvey = require('./getcall/surveyGet')
-const surveyRoutes = require('./routes/surveyRoutes');
+
 const sumationData = require('./routes/SumationRoutes');
 const cities = require('./masters/cityMaster')
 const getCities = require('./getcall/cityGetMaster')
@@ -20,10 +20,12 @@ const deleteBusinessCategory = require('./deletecall/businessCategoryDelete')
 const facade = require('./masters/facadeMaster')
 const getFacades = require('./getcall/getFacadeMaster')
 const deleteCity = require('./deletecall/deleteCity')
+const createSurvey = require('./routes/surveyRoutes')
 app.use(cors());
 app.use(bodyParser.json());
 connectDB();
 
+app.use(createSurvey)
 app.use(getSurvey)
 app.use(deleteSurveyById)
 app.use(elevatorRoutes)
@@ -36,7 +38,7 @@ app.use(cities);
 app.use(getBusinessCategory)
 app.use(business);
 app.use(sumationData);
-app.use(surveyRoutes);
+
 app.use(addphoto)
 app.use(StoreData),
 app.use(deleteBusinessCategory)

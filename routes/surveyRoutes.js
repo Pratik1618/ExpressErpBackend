@@ -1,8 +1,7 @@
 // routes/surveyRoutes.js
 const express = require('express');
-const SurveyData = require('../model/survey');
+const SurveyData = require('../model/survey')
 const router = express.Router();
-
 
 router.post('/survey/create', async (req, res) => {
   const incomingData = req.body;
@@ -28,9 +27,7 @@ router.post('/survey/create', async (req, res) => {
       console.error('Error processing survey data:', error);
       return res.status(500).json({ message: 'Failed to process survey data' });
     }
-  } else {
-    return res.status(400).json({ message: 'No survey data provided' });
-  }
+  } 
 });
 
 module.exports = router;
