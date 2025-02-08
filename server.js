@@ -21,6 +21,9 @@ const facade = require('./masters/facadeMaster')
 const getFacades = require('./getcall/getFacadeMaster')
 const deleteCity = require('./deletecall/deleteCity')
 const createSurvey = require('./routes/surveyRoutes')
+const createUser = require('./auth/authRoutes/userRoutes')
+const loginUser = require('./auth/authRoutes/loginRoutes')
+const forgotPassword = require('./auth/authRoutes/forgotPassword')
 app.use(cors());
 app.use(bodyParser.json());
 connectDB();
@@ -44,6 +47,9 @@ app.use(StoreData),
 app.use(deleteBusinessCategory)
 app.use(facade)
 app.use(getFacades)
+app.use(createUser)
+app.use(loginUser)
+app.use(forgotPassword)
 app.get('/', (req, res) => {
     res.send('Hello, World! This is the root URL.');
 });
