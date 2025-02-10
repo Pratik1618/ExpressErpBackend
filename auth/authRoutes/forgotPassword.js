@@ -7,7 +7,7 @@ const router = express.Router()
 
 
 const transporter = nodemailer.createTransport({
-    service:'smtp.ethereal.email',
+    host:'smtp.ethereal.email',
     port: 587,
     auth:{
         user:"jacklyn.macejkovic41@ethereal.email",
@@ -30,7 +30,7 @@ router.post('/forgot-password',async(req,res)=>{
         const otp = crypto.randomInt(100000, 999999).toString();
 
         const mailOptions = {
-            from: 'kadampratik18@gmail.com', // Your email
+            from: 'jacklyn.macejkovic41@ethereal.email', // Your email
             to: email,  // Recipient email
             subject: 'Password Reset OTP',
             text: `Your OTP for password reset is: ${otp}`,
@@ -47,7 +47,7 @@ router.post('/forgot-password',async(req,res)=>{
             user.resetOtpExpiry = Date.now() + 10 * 60 * 1000;
             user.save();
             
-            res.status(200).json({message:"OTP sent successfully"})
+            res.status(200).json({message:`OTP sent successfully,${otp}`})
           })
     }
     catch (error) {
