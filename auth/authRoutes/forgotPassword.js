@@ -7,11 +7,10 @@ const router = express.Router()
 
 
 const transporter = nodemailer.createTransport({
-    host:'smtp.ethereal.email',
-    port: 587,
+   service:"Gmail",
     auth:{
-        user:"jacklyn.macejkovic41@ethereal.email",
-        pass:"P3na7h2f5NBayXrtzF"
+        user:"kadampratik18@gmail.com",
+        pass:"ktzh slri sieu tquo"
     },
     logger: true, // Enable debug logging
     debug: true,
@@ -30,7 +29,7 @@ router.post('/forgot-password',async(req,res)=>{
         const otp = crypto.randomInt(100000, 999999).toString();
 
         const mailOptions = {
-            from: 'jacklyn.macejkovic41@ethereal.email', // Your email
+            from: `"no@reply" <kadampratik18@gmail.com>`, // Your email
             to: email,  // Recipient email
             subject: 'Password Reset OTP',
             text: `Your OTP for password reset is: ${otp}`,
