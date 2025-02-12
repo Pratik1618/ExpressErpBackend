@@ -11,13 +11,13 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  resetOtp: {
+  Otp: {
     type: String,
     default: null  // To store the OTP
   },
-  resetOtpExpiry: {
+  otpGeneratedAt: {
     type: Date,
-    default: null  // To store the OTP expiration time
+    default: null  // Timestamp for when OTP is generated
   }
 });
 

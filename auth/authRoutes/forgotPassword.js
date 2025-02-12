@@ -42,8 +42,9 @@ router.post('/forgot-password',async(req,res)=>{
                 return res.status(500).json({message:"error sending otp"})
             }
 
-            user.resetOtp = otp;
-            user.resetOtpExpiry = Date.now() + 10 * 60 * 1000;
+            user.Otp = otp;
+            user.otpGeneratedAt = new Date()
+           
             user.save();
             
             res.status(200).json({message:`OTP sent successfully,${otp}`})

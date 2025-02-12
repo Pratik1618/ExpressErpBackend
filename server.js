@@ -24,10 +24,11 @@ const createSurvey = require('./routes/surveyRoutes')
 const createUser = require('./auth/authRoutes/userRoutes')
 const loginUser = require('./auth/authRoutes/loginRoutes')
 const forgotPassword = require('./auth/authRoutes/forgotPassword')
+const expireOtp = require('./auth/authRoutes/expireOtp')
 app.use(cors());
 app.use(bodyParser.json());
 connectDB();
-
+expireOtp();
 app.use(createSurvey)
 app.use(getSurvey)
 app.use(deleteSurveyById)
