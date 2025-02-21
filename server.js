@@ -25,6 +25,7 @@ const createUser = require('./auth/authRoutes/userRoutes')
 const loginUser = require('./auth/authRoutes/loginRoutes')
 const forgotPassword = require('./auth/authRoutes/forgotPassword')
 const expireOtp = require('./auth/authRoutes/expireOtp')
+const verifyOtp = require('./auth/authRoutes/changePassword')
 app.use(cors());
 app.use(bodyParser.json());
 connectDB();
@@ -51,6 +52,7 @@ app.use(getFacades)
 app.use(createUser)
 app.use(loginUser)
 app.use(forgotPassword)
+app.use(verifyOtp)
 app.get('/', (req, res) => {
     res.send('Hello, World! This is the root URL.');
 });
