@@ -26,6 +26,9 @@ const loginUser = require('./auth/authRoutes/loginRoutes')
 const forgotPassword = require('./auth/authRoutes/forgotPassword')
 const expireOtp = require('./auth/authRoutes/expireOtp')
 const verifyOtp = require('./auth/authRoutes/changePassword')
+const decodeToken = require('./auth/authRoutes/decode-token')
+
+require('dotenv').config(); 
 app.use(cors());
 app.use(bodyParser.json());
 connectDB();
@@ -53,12 +56,15 @@ app.use(createUser)
 app.use(loginUser)
 app.use(forgotPassword)
 app.use(verifyOtp)
+app.use(decodeToken)
 app.get('/', (req, res) => {
     res.send('Hello, World! This is the root URL.');
 });
 
+const jwtSecret = process.env.JWT_SECRET
 // Start the server
 const port = 8085;
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
+    console.log(jwtSecret)
 });
