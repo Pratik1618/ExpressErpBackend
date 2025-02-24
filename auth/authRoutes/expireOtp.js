@@ -2,6 +2,7 @@ const cron = require('node-cron');
 const User = require('../userSchema')
 
 async function expireOtp() {
+ //need to optimize
     console.log('cron job started');
     cron.schedule('*/1 * * * *',async()=>{
         try {
